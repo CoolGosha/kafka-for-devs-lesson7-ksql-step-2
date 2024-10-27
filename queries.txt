@@ -10,7 +10,7 @@ ksql> create table user_clicks_by_website as
 >group by website
 >emit changes;
 
-ksql> create stream incoming_user_clicks_by_website_1(website_clicked varchar, users_clicked bigint) with (kafka_topic='USER_CLICKS_BY_WEBSITE', value_format='avro');
+ksql> create stream incoming_user_clicks_by_website (website_clicked varchar, users_clicked bigint) with (kafka_topic='USER_CLICKS_BY_WEBSITE', value_format='avro');
 
 ksql> create or replace stream aggregated_user_clicks
 >with (kafka_topic = 'aggregated_user_clicks', partitions=1, replicas=3) as
